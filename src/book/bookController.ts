@@ -41,6 +41,8 @@ const bookFileUploadResult = await cloudinary.uploader.upload(bookFilePath, {
 console.log('bookFileUploadResult', bookFileUploadResult)
 
 console.log("uploadResult", uploadResult)
+// @ts-ignore
+console.log('userId', req.userId);
 
 
 const newBook = await bookModel.create({
