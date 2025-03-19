@@ -150,7 +150,7 @@ const listBooks = async (req: Request, res: Response, next: NextFunction) => {
 
     try {
         // todo: add pagination.
-        const book = await bookModel.find().populate("author", "name");
+        const book = await bookModel.find().populate("author", "name").lean();
         res.json(book);
     } catch (err) {
         return next(createHttpError(500, "Error while getting a book"));
