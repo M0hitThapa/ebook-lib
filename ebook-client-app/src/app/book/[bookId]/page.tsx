@@ -22,7 +22,7 @@ const SingleBookPage = async ({ params }: { params: { bookId: string } }) => {
   }
 
   return (
-    <div className='mx-auto grid max-w-6xl grid-cols-3 gap-10 px-5 py-10'>
+    <div className='mx-auto grid max-w-6xl grid-cols-3 gap-10 px-5 py-10  '>
       <div className='col-span-2 pr-16 text-teal-950'>
         <h2 className='mb-5 text-5xl font-bold leading-[1.1]'>{book.title}</h2>
         <span className='font-semibold'>{book.author?.name}</span>

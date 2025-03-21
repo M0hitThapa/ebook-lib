@@ -2,7 +2,7 @@ import React from 'react'
 import Image from 'next/image'
 const Banner = () => {
   return (
-    <div className='mx-auto max-w-6xl px-2 py-8'>
+    <div className='mx-auto max-w-5xl px-2 py-6'>
         <div className='relative'> 
             <Image src="/bg.avif" alt='bg' className='h-60 w-full rounded-lg'
             height={0} width={0} sizes='100vw' />
