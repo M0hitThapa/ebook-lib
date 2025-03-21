@@ -176,7 +176,7 @@ const getSingleBook = async (
         return res.json(book);
     } catch (err) {
         return next(createHttpError(500, "Error while getting a book"));
-    }
+    } 
 };
 
 const deleteBook = async (req: Request, res: Response, next: NextFunction) => {
