@@ -4,7 +4,7 @@ import Image from 'next/image'
 
 const Navbar = () => {
   return (
-    <nav className=' border-b border-b-black/20 bg-orange-100 '>
+    <nav className=' border-b border-b-black/20 bg-orange-50/20 '>
       <div className='max-w-5xl mx-auto flex items-center justify-between py-2'>
       <div>
             <Link href={'/'}>

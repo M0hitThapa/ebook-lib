@@ -153,6 +153,7 @@ const listBooks = async (req: Request, res: Response, next: NextFunction) => {
         const book = await bookModel.find().populate("author", "name").lean();
         res.json(book);
     } catch (err) {
+        
         return next(createHttpError(500, "Error while getting a book"));
     }
 };
