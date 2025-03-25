@@ -10,11 +10,25 @@ import {
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Link } from "react-router-dom"
+import { useRef } from "react"
 
 export function LoginForm({
   className,
   ...props
 }: React.ComponentPropsWithoutRef<"div">) {
+  const emailRef = useRef<HTMLInputElement>(null)
+  const passwordRef = useRef<HTMLInputElement>(null)
+
+  const handleLoginSubmit = (event: React.FormEvent) => {
+    event.preventDefault() // ⬅️ Prevents page reload
+
+    const email = emailRef.current?.value
+    const password = passwordRef.current?.value
+
+    console.log("Email:", email)
+    console.log("Password:", password)
+  }
+
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
       <Card>
@@ -25,14 +39,17 @@ export function LoginForm({
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <form>
+          {/* ⬇️ Form submits only via handleLoginSubmit */}
+          <form onSubmit={handleLoginSubmit}>
             <div className="flex flex-col gap-6">
               <div className="grid gap-2">
                 <Label htmlFor="email">Email</Label>
                 <Input
+                  ref={emailRef}
                   id="email"
                   type="email"
                   placeholder="m@example.com"
+                  autoComplete="email" // ✅ Fix: Adds autocomplete
                   required
                 />
               </div>
@@ -46,16 +63,22 @@ export function LoginForm({
                     Forgot your password?
                   </a>
                 </div>
-                <Input id="password" type="password" required />
+                <Input
+                  ref={passwordRef}
+                  id="password"
+                  type="password"
+                  autoComplete="current-password" // ✅ Fix: Adds autocomplete
+                  required
+                />
               </div>
+              {/* ✅ Fix: `type="submit"` allows form submission */}
               <Button type="submit" className="w-full">
                 Login
               </Button>
-            
             </div>
             <div className="mt-4 text-center text-sm">
               Don&apos;t have an account?{" "}
-              <Link to={"/register"} className="underline underline-offset-4">
+              <Link to={"/auth/register"} className="underline underline-offset-4">
                 Sign up
               </Link>
             </div>
