@@ -53,7 +53,8 @@ export function LoginForm({
         <CardHeader>
           <CardTitle className="text-2xl">Login</CardTitle>
           <CardDescription>
-            Enter your email below to login to your account
+            Enter your email below to login to your account.
+            {mutation.isPending && <div>Loading...</div>}
           </CardDescription>
         </CardHeader>
         <CardContent>

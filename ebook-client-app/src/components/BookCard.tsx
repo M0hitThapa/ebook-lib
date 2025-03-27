@@ -5,9 +5,9 @@ import Link from 'next/link'
 
 const BookCard = ({book}: {book: Book}) => {
   return (
-    <div className='flex gap-10 shadow-md px-10 py-4 font-mono bg-purple-50 '>
+    <div className='flex gap-10  px-10 py-4 font-mono bg-purple-50 rounded-2xl '>
       
-        <Image className='rounded-lg' src={book.coverImage} alt={book.title} width={0} height={0} sizes='100vw' style={{width:'auto', height:'9rem'}}/>
+        <Image className='rounded-lg shadow-md shadow-black' src={book.coverImage} alt={book.title} width={0} height={0} sizes='100vw' style={{width:'5rem', height:'8rem'}}/>
         <div>
             <h2 className='line-clamp-2 text-xl font-bold text-black text-balance'>{book.title}</h2>
             <p className='font-bold text-slate-900 mt-1'>{book.author.name}</p>
