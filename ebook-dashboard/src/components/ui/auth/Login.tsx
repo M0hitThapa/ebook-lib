@@ -13,6 +13,7 @@ import { Link, useNavigate } from "react-router-dom"
 import { useRef } from "react"
 import { useMutation } from "@tanstack/react-query"
 import { login } from "@/http/api"
+import { LoaderCircle } from "lucide-react"
 
 
 
@@ -91,8 +92,11 @@ export function LoginForm({
                 />
               </div>
               
-              <Button type="submit" className="w-full">
-                Login
+              <Button onClick={handleLoginSubmit} type="submit" className="w-full" disabled={mutation.isPending}>
+             {mutation.isPending && (
+                 <LoaderCircle className="animate-spin" />
+             )}
+                <span>Login</span>
               </Button>
             </div>
             <div className="mt-4 text-center text-sm">
