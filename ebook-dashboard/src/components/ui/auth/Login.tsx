@@ -34,10 +34,11 @@ export function LoginForm({
   const mutation = useMutation({
     mutationFn: login,
     onSuccess: (response) => {
-      // @ts-ignore
-      setToken(response.data.accessToken);
-      navigate('/dashboard/home')
+      const data = response.data as { accessToken: string }; // 🔑 Narrowing type
+      setToken(data.accessToken);
+      navigate('/dashboard/home');
     },
+    
   })
 
   const handleLoginSubmit = (event: React.FormEvent) => {

@@ -11,6 +11,7 @@ import {
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { register } from "@/http/api"
+import useTokenStore from "@/store"
 import { useMutation } from "@tanstack/react-query"
 import { LoaderCircle } from "lucide-react"
 import { useRef } from "react"
@@ -20,6 +21,7 @@ export const description =
   "A sign up form with first name, last name, email and password inside a card. There's an option to sign up with GitHub and a link to login if you already have an account"
 
 export function SignUpForm() {
+  const setToken = useTokenStore((state) => state.setToken);
 
   const navigate = useNavigate();
   const nameRef = useRef<HTMLInputElement>(null)
@@ -28,9 +30,10 @@ export function SignUpForm() {
 
   const mutation = useMutation({
     mutationFn: register,
-    onSuccess: () => {
-      console.log('Login Successful')
-      navigate('/dashboard/home')
+    onSuccess: (response) => {
+      const data = response.data as { accessToken: string }; // 🔑 Narrowing type
+      setToken(data.accessToken);
+      navigate('/dashboard/home');
     },
   })
 
