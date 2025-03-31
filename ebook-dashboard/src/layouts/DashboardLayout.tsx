@@ -30,10 +30,17 @@ export const description =
 
 export default function DashBoardLayout() {
 
-  const token = useTokenStore(state => state.token)
+  const token = useTokenStore(state => state.token);
+const setToken = useTokenStore(state => state.setToken);
+  
 
   if (token === "") {
     return <Navigate to={'/auth/login'} replace />
+  }
+
+  const logout = () => {
+    console.log("Logging out")
+    setToken('');
   }
   return (
     <div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
@@ -139,7 +146,9 @@ export default function DashBoardLayout() {
               <DropdownMenuItem>Settings</DropdownMenuItem>
               <DropdownMenuItem>Support</DropdownMenuItem>
               <DropdownMenuSeparator />
-              <DropdownMenuItem>Logout</DropdownMenuItem>
+              <DropdownMenuItem>
+                <Button onClick={logout} variant={"link"}>Logout</Button>
+              </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         </header>
