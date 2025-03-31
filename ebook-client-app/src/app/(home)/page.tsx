@@ -6,7 +6,7 @@ export default async function Home() {
 
   
   return (
-    <div className="bg-orange-50/20">
+    <div className="bg-black">
  <Banner />
  <Suspense fallback={<Loading />}>
  <BookList />

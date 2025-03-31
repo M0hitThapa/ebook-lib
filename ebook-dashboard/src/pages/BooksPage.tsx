@@ -8,6 +8,7 @@ import { getBooks } from "@/http/api"
 import { Book } from "@/types"
 import { useQuery } from "@tanstack/react-query"
 import { MoreHorizontal, PlusCircle } from "lucide-react"
+import { Link } from "react-router-dom"
 
 
 const BooksPage = () => {
@@ -34,8 +35,10 @@ console.log(data)
     </BreadcrumbItem>
   </BreadcrumbList>
 </Breadcrumb>
+<Link to="/dashboard/books/create">
 <Button><PlusCircle />
 <span>Add Book</span></Button>
+</Link>
 </div>
 
 

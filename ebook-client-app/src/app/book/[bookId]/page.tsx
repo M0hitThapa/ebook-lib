@@ -25,8 +25,8 @@ const SingleBookPage = async ({ params }: { params: { bookId: string } }) => {
   }
 
   return (
-    <div className='mx-auto grid max-w-6xl grid-cols-3 gap-10 px-5 py-10 bg-orange-50/20  '>
-      <div className='col-span-2 pr-16 text-teal-950'>
+    <div className='mx-auto grid max-w-6xl grid-cols-3 gap-10 px-5 py-10   '>
+      <div className='col-span-2 pr-16 text-slate-200'>
         <h2 className='mb-5 text-5xl font-bold leading-[1.1]'>{book.title}</h2>
         <span className='font-semibold'>{book.author?.name}</span>
         <p className='mt-5 text-lg leading-8'>{book.description}</p>
@@ -36,7 +36,7 @@ const SingleBookPage = async ({ params }: { params: { bookId: string } }) => {
         <Image
           src={book.coverImage}
           alt={book.title}
-          className='rounded-md border shadow-2xl shadow-black'
+          className='rounded-md border border-slate-200 ' 
           width={200} // Adjust width based on your layout
           height={350} // Adjust height based on your layout
           priority
